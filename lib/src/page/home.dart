@@ -35,6 +35,7 @@ class Home extends StatelessWidget {
           height: 60,
           child: Btn(
             onTap: () {},
+            color: const Color(0xff9279C8),
             text: '시작하기',
           ),
         ),
@@ -123,8 +124,8 @@ class _AgreementBoxState extends State<_AgreementBox> {
           children: [
             SvgPicture.asset(
               isChecked
-                  ? 'assets/svg/icon_radio_light_on.svg'
-                  : 'assets/svg/icon_radio_light_off.svg',
+                  ? 'assets/svg/icon_radio_on.svg'
+                  : 'assets/svg/icon_radio_off.svg',
             ),
             const SizedBox(width: 10),
             Expanded(
