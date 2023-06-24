@@ -53,10 +53,15 @@ class _HeaderWidget extends StatelessWidget {
       child: Stack(
         children: [
           GestureDetector(
-              onTap: () {
-                Scaffold.of(context).openDrawer();
-              },
-              child: SvgPicture.asset('assets/svg/icon_drawer.svg')),
+            onTap: () {
+              Scaffold.of(context).openDrawer();
+            },
+            child: SvgPicture.asset(
+              'assets/svg/icon_drawer.svg',
+              colorFilter: ColorFilter.mode(
+                  Theme.of(context).iconTheme.color!, BlendMode.srcIn),
+            ),
+          ),
           Center(child: Image.asset('assets/images/card_image.png')),
         ],
       ),
@@ -123,15 +128,18 @@ class _AgreementBoxState extends State<_AgreementBox> {
           children: [
             SvgPicture.asset(
               isChecked
-                  ? 'assets/svg/icon_radio_light_on.svg'
-                  : 'assets/svg/icon_radio_light_off.svg',
+                  ? 'assets/svg/icon_radio_on.svg'
+                  : 'assets/svg/icon_radio_off.svg',
+              colorFilter: ColorFilter.mode(
+                  Theme.of(context).textTheme.displayMedium!.color!,
+                  BlendMode.srcIn),
             ),
             const SizedBox(width: 10),
             Expanded(
               child: AppFont(
                 name,
                 color: isChecked
-                    ? const Color(0xff483473)
+                    ? Theme.of(context).textTheme.displayMedium!.color
                     : const Color(0xff717171),
                 size: 20,
               ),
@@ -148,7 +156,7 @@ class _AgreementBoxState extends State<_AgreementBox> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Colors.white,
+        color: Theme.of(context).colorScheme.secondary,
       ),
       child: Column(
         children: [
@@ -161,7 +169,7 @@ class _AgreementBoxState extends State<_AgreementBox> {
               });
             },
           ),
-          const Divider(color: Color(0xffE7E7E7), height: 1),
+          Divider(color: Theme.of(context).colorScheme.primary, height: 1),
           agreementSingleWidget(
             name: '개인정보 처리방침',
             isChecked: isCheckedPrivacyPolicy,
@@ -171,7 +179,7 @@ class _AgreementBoxState extends State<_AgreementBox> {
               });
             },
           ),
-          const Divider(color: Color(0xffE7E7E7), height: 1),
+          Divider(color: Theme.of(context).colorScheme.primary, height: 1),
           agreementSingleWidget(
             name: '마케팅정보 수신 동의',
             isChecked: isCheckedMarketing,
