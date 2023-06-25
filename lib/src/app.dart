@@ -1,16 +1,29 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_theme_sample/src/controller/theme_controller.dart';
 import 'package:flutter_theme_sample/src/page/home.dart';
+import 'package:get/get.dart';
 
-class MyApp extends StatelessWidget {
+class MyApp extends GetView<ThemeController> {
   const MyApp({super.key});
+
+  void initThemeMode(BuildContext context) {
+    var brightness = MediaQuery.of(context).platformBrightness;
+    controller
+        .init(brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light);
+  }
 
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      title: 'Flutter Demo',
-      theme: lightMode,
-      darkTheme: darkMode,
-      home: const Home(),
+    initThemeMode(context);
+    return Obx(
+      () => GetMaterialApp(
+        title: 'Flutter Demo',
+        theme: lightMode,
+        darkTheme: darkMode,
+        themeMode: controller.themeMode.value,
+        initialBinding: BindingsBuilder(() {}),
+        home: const Home(),
+      ),
     );
   }
 }

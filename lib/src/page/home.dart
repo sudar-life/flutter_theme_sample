@@ -3,6 +3,8 @@ import 'package:flutter_svg/svg.dart';
 import 'package:flutter_theme_sample/src/components/app_font.dart';
 import 'package:flutter_theme_sample/src/components/btn.dart';
 import 'package:flutter_theme_sample/src/components/theme_drawer.dart';
+import 'package:flutter_theme_sample/src/controller/theme_controller.dart';
+import 'package:get/get.dart';
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -10,7 +12,7 @@ class Home extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: ThemeDrawer(),
+      drawer: const ThemeDrawer(),
       body: const SafeArea(
         child: Padding(
           padding: EdgeInsets.all(25.0),
@@ -34,7 +36,9 @@ class Home extends StatelessWidget {
         child: SizedBox(
           height: 60,
           child: Btn(
-            onTap: () {},
+            onTap: () {
+              Get.find<ThemeController>().updateMode(ThemeMode.dark);
+            },
             text: '시작하기',
           ),
         ),
