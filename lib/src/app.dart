@@ -5,27 +5,30 @@ import 'package:flutter_theme_sample/src/page/home.dart';
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
+  void initThemeMode(BuildContext context) {
+    var brightness = MediaQuery.of(context).platformBrightness;
+    context.read<ThemeCubit>().updateMode(
+        brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light);
+  }
 
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
       create: (context) => ThemeCubit(),
-      child: BlocBuilder<ThemeCubit, bool?>(
-        builder: (context, state) {
-          var isDarkMode =
-              MediaQuery.of(context).platformBrightness == Brightness.dark;
-          if (state != null) {
-            isDarkMode = state;
-          }
-          return MaterialApp(
-            title: 'Flutter Demo',
-            theme: lightMode,
-            darkTheme: darkMode,
-            themeMode: isDarkMode ? ThemeMode.dark : ThemeMode.light,
-            home: const Home(),
-          );
-        },
-      ),
+      child: Builder(builder: (context) {
+        initThemeMode(context);
+        return BlocBuilder<ThemeCubit, ThemeState>(
+          builder: (context, state) {
+            return MaterialApp(
+              title: 'Flutter Demo',
+              theme: lightMode,
+              darkTheme: darkMode,
+              themeMode: state.themeMode,
+              home: const Home(),
+            );
+          },
+        );
+      }),
     );
   }
 }
