@@ -14,8 +14,7 @@ class _ThemeDrawerState extends State<ThemeDrawer> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.primary,
+    return Drawer(
       width: MediaQuery.of(context).size.width * 0.8,
       child: SafeArea(
         child: Padding(

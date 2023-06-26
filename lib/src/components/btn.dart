@@ -22,13 +22,14 @@ class Btn extends StatelessWidget {
         borderRadius: BorderRadius.circular(7),
         child: Container(
           padding: padding,
-          color: color ?? Theme.of(context).buttonTheme.colorScheme!.primary,
+          color: color ??
+              Theme.of(context).buttonTheme.colorScheme!.primaryContainer,
           child: Center(
             child: AppFont(
               text,
               size: 20,
               fontWeight: FontWeight.bold,
-              color: Theme.of(context).textTheme.labelLarge!.color,
+              color: Colors.white,
             ),
           ),
         ),

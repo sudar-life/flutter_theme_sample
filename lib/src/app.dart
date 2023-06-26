@@ -21,16 +21,14 @@ ThemeData lightMode = ThemeData(
   textTheme: TextTheme(
     titleLarge: const TextStyle(color: Color(0xff28222B)),
     titleSmall: TextStyle(color: const Color(0xff28222B).withOpacity(0.7)),
-    labelLarge: const TextStyle(color: Colors.white),
-    displayMedium: const TextStyle(color: Color(0xff9279C8)),
+    labelMedium: const TextStyle(color: Color(0xff9279C8)),
   ),
-  colorScheme: const ColorScheme.light(
-    primary: Color(0xffEAE8F4),
-    secondary: Colors.white,
-  ),
+  cardTheme: const CardTheme(color: Color(0xffEAE8F4)),
+  dividerTheme: const DividerThemeData(color: Color(0xffEAE8F4)),
   buttonTheme: const ButtonThemeData(
     colorScheme: ColorScheme.light(
-      primary: Color(0xff9279C8),
+      primary: Colors.white,
+      primaryContainer: Color(0xff9279C8),
     ),
   ),
   switchTheme: SwitchThemeData(
@@ -40,6 +38,7 @@ ThemeData lightMode = ThemeData(
     ),
   ),
   iconTheme: const IconThemeData(color: Colors.black),
+  drawerTheme: const DrawerThemeData(backgroundColor: Color(0xffEAE8F4)),
 );
 ThemeData darkMode = ThemeData(
   useMaterial3: true,
@@ -47,16 +46,14 @@ ThemeData darkMode = ThemeData(
   textTheme: TextTheme(
     titleLarge: const TextStyle(color: Color(0xffDADADA)),
     titleSmall: TextStyle(color: const Color(0xffDADADA).withOpacity(0.7)),
-    labelLarge: const TextStyle(color: Colors.white),
-    displayMedium: const TextStyle(color: Color(0xff8ABD93)),
+    labelMedium: const TextStyle(color: Color(0xff8ABD93)),
   ),
-  colorScheme: const ColorScheme.dark(
-    primary: Color(0xff28222B),
-    secondary: Color(0xff342C38),
-  ),
+  cardTheme: const CardTheme(color: Color(0xff342C38)),
+  dividerTheme: const DividerThemeData(color: Color(0xff28222B)),
   buttonTheme: const ButtonThemeData(
     colorScheme: ColorScheme.dark(
-      primary: Color(0xff8ABD93),
+      primary: Colors.white,
+      primaryContainer: Color(0xff8ABD93),
     ),
   ),
   switchTheme: SwitchThemeData(
@@ -66,4 +63,5 @@ ThemeData darkMode = ThemeData(
     ),
   ),
   iconTheme: const IconThemeData(color: Colors.white),
+  drawerTheme: const DrawerThemeData(backgroundColor: Color(0xff28222B)),
 );

@@ -131,7 +131,7 @@ class _AgreementBoxState extends State<_AgreementBox> {
                   ? 'assets/svg/icon_radio_on.svg'
                   : 'assets/svg/icon_radio_off.svg',
               colorFilter: ColorFilter.mode(
-                  Theme.of(context).textTheme.displayMedium!.color!,
+                  Theme.of(context).textTheme.labelMedium!.color!,
                   BlendMode.srcIn),
             ),
             const SizedBox(width: 10),
@@ -139,7 +139,7 @@ class _AgreementBoxState extends State<_AgreementBox> {
               child: AppFont(
                 name,
                 color: isChecked
-                    ? Theme.of(context).textTheme.displayMedium!.color
+                    ? Theme.of(context).textTheme.labelMedium!.color
                     : const Color(0xff717171),
                 size: 20,
               ),
@@ -156,7 +156,7 @@ class _AgreementBoxState extends State<_AgreementBox> {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(15),
-        color: Theme.of(context).colorScheme.secondary,
+        color: Theme.of(context).cardTheme.color,
       ),
       child: Column(
         children: [
@@ -169,7 +169,7 @@ class _AgreementBoxState extends State<_AgreementBox> {
               });
             },
           ),
-          Divider(color: Theme.of(context).colorScheme.primary, height: 1),
+          const Divider(height: 1),
           agreementSingleWidget(
             name: '개인정보 처리방침',
             isChecked: isCheckedPrivacyPolicy,
@@ -179,7 +179,7 @@ class _AgreementBoxState extends State<_AgreementBox> {
               });
             },
           ),
-          Divider(color: Theme.of(context).colorScheme.primary, height: 1),
+          const Divider(height: 1),
           agreementSingleWidget(
             name: '마케팅정보 수신 동의',
             isChecked: isCheckedMarketing,
