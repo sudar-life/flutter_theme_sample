@@ -36,9 +36,7 @@ class Home extends StatelessWidget {
         child: SizedBox(
           height: 60,
           child: Btn(
-            onTap: () {
-              Get.find<ThemeController>().updateMode(ThemeMode.dark);
-            },
+            onTap: () {},
             text: '시작하기',
           ),
         ),

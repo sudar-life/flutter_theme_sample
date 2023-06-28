@@ -7,9 +7,7 @@ class MyApp extends GetView<ThemeController> {
   const MyApp({super.key});
 
   void initThemeMode(BuildContext context) {
-    var brightness = MediaQuery.of(context).platformBrightness;
-    controller
-        .init(brightness == Brightness.dark ? ThemeMode.dark : ThemeMode.light);
+    controller.init(Get.isPlatformDarkMode ? ThemeMode.dark : ThemeMode.light);
   }
 
   @override
