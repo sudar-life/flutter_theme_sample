@@ -8,8 +8,7 @@ class ThemeDrawer extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Theme.of(context).colorScheme.primary,
+    return Drawer(
       width: MediaQuery.of(context).size.width * 0.8,
       child: SafeArea(
         child: Padding(
@@ -17,22 +16,15 @@ class ThemeDrawer extends StatelessWidget {
           child: Column(
             children: [
               BlocBuilder<ThemeCubit, ThemeState>(builder: (context, state) {
-                ThemeMode themeMode =
-                    MediaQuery.of(context).platformBrightness == Brightness.dark
-                        ? ThemeMode.dark
-                        : ThemeMode.light;
-                if (state.themeMode != null) {
-                  themeMode = state.themeMode!;
-                }
                 return Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     AppFont(
-                      themeMode == ThemeMode.light ? '라이트 모드' : '다크 모드',
+                      state.themeMode == ThemeMode.light ? '라이트 모드' : '다크 모드',
                       size: 23,
                     ),
                     Switch(
-                      value: themeMode == ThemeMode.light,
+                      value: state.themeMode == ThemeMode.light,
                       onChanged: (ck) {
                         context.read<ThemeCubit>().updateMode(
                               ck ? ThemeMode.light : ThemeMode.dark,

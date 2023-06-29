@@ -15,7 +15,7 @@ class ThemeCubit extends HydratedCubit<ThemeState> {
       );
       return;
     }
-    if (isSaveLocalData != null && !isSaveLocalData) {
+    if (isSaveLocalData == null || !isSaveLocalData) {
       emit(
         state.copyWith(
           isDarkMode:
